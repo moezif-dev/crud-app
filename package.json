@@ -1,0 +1,28 @@
+{
+  "name": "crud-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moezif-dev/crud-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moezif-dev/crud-app/issues"
+  },
+  "homepage": "https://github.com/moezif-dev/crud-app#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "express": "^4.17.0",
+    "gravatar": "^1.8.0",
+    "mongoose": "^5.5.11",
+    "morgan": "^1.9.1"
+  }
+}
