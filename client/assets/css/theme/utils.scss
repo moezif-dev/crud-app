@@ -1,0 +1,121 @@
+.bg {
+	&-black{
+		color: $white;
+		background: $black;
+		border-color: $black-light;
+		&:hover{
+			.btn{
+				background: $black-light;
+			}
+		}
+	}
+	&-white{
+		color: $black;
+		background: $white;
+		border-color: $white-dark;
+		&:hover{
+			.btn{
+				background: $white-dark;
+			}
+		}
+	}
+	&-primary{
+		color: $white;
+		background: $primary;
+		border-color: $primary-dark;
+		&:hover{
+			.btn{
+				background: $primary-dark;
+			}
+		}
+	}
+	&-secondary{
+		color: $white;
+		background: $secondary;
+		border-color: $secondary-dark;
+		&:hover{
+			.btn{
+				background: $secondary-dark;
+			}
+		}
+	}
+	&-success{
+		color: $white;
+		background: $success;
+		border-color: $success-dark;
+		&:hover{
+			.btn{
+				background: $success-dark;
+			}
+		}
+	}
+	&-danger{
+		color: $white;
+		background: $danger;
+		border-color: $danger-dark;
+		&:hover{
+			.btn{
+				background: $danger-dark;
+			}
+		}
+	}
+	&-info{
+		color: $white;
+		background: $info;
+		border-color: $info-dark;
+		&:hover{
+			.btn{
+				background: $info-dark;
+			}
+		}
+	}
+	&-warning{
+		color: $white;
+		background: $warning;
+		border-color: $warning-dark;
+		&:hover{
+			.btn{
+				background: $warning-dark;
+			}
+		}
+	}
+}
+
+.text {
+	&-black{
+		background: $black;
+		color: $white;
+	}
+	&-white{
+		background: $white;
+		color: $black;
+	}
+	&-primary{
+		background: $primary;
+		color: $white;
+	}
+	&-secondary{
+		background: $secondary;
+		color: $white;
+	}
+	&-success{
+		background: $success;
+		color: $white;
+	}
+	&-danger{
+		background: $danger;
+		color: $white;
+	}
+	&-info{
+		background: $info;
+		color: $white;
+	}
+	&-warning{
+		background: $warning;
+		color: $white;
+	}
+}
+
+.text-bold {
+	font-weight: bold !important;
+}
