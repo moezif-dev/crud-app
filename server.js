@@ -27,6 +27,9 @@ mongoose
   .then( () => console.log("MongoDB Coonected.") )
   .catch( err => console.log(err) );
 
+app.use('/', (req, res) => {
+	res.json({ connected: true })
+});
 app.use('/api/users', users);
 
 // use PORT variable from HEROKU env if available
