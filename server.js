@@ -28,8 +28,13 @@ mongoose
   .then( () => console.log("MongoDB Coonected.") )
   .catch( err => console.log(err) );
 
-app.use('/', express.static(path.join(__dirname,'public')) );
 app.use('/api/users', users);
+
+// Serve static assets in production
+if(process.env.NODE_ENV === production){
+	// set Static folder
+	app.use('/', express.static(path.join(__dirname,'public')) );
+}
 
 // use PORT variable from HEROKU env if available
 const port = process.env.PORT || 5000;
