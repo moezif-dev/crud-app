@@ -104,7 +104,30 @@ const CreateDialog = (user, isEdit) => {
   const $CreateForm = UserForm(user, isEdit);
 
   const callback = () => {
-    const userJson = $CreateForm.json();
+    const { 
+      jsonOutput: userJson,
+      validation: { isValid, errors } } = $CreateForm.json();
+
+    // reset error fields on submit
+    const _resetErrors = () => {
+      const $errors = $CreateForm.querySelectorAll(`.user-input-feedback`);
+      
+      for( let i = 0; i < $errors.length; i++){
+        $errors[i].textContent = '';
+      }
+    };
+
+    // show feedback messages if form is not valid
+    _resetErrors();
+    if( !isValid ){
+      (Object.keys(errors) || []).forEach( err => {
+        const errorNode = document.createTextNode(errors[err]);
+        const $el = $CreateForm.querySelector(`[name="${err}"] ~ .user-input-feedback`);
+        $el && $el.appendChild( errorNode );
+      });
+      return; 
+    }
+  
     httpClient.post(`/api/users/`, userJson, (err, resp) => {
       if (err) {
         console.log(err);

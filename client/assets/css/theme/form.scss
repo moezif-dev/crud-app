@@ -1,12 +1,19 @@
 .user-form {
-	text-align: center;
-		
 	.user-input-group{
-		margin: 10px 5px;
+		width: 360px;
+		margin: 10px auto;
+
 	}
 	.user-label{
 		width: 120px;
 		display: inline-block;
+		text-align: left;
+	}
+
+	.user-input-feedback{
+		width: 200px;
+		color: $danger-dark;
+		display: block;
 		text-align: left;
 	}
 }

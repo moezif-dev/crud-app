@@ -21,7 +21,7 @@ httpReq.prototype.get = function(url, callback){
 					const users = JSON.parse( responseText );
 					callback(null, users);
 				} else {
-					callback(`Error: ${self.http.status}`);
+					callback(`Error: ${self.http.statusText}`);
 				}
 			}
 		}
@@ -50,7 +50,7 @@ httpReq.prototype.post = function(url, data, callback){
 					const user = JSON.parse( responseText );
 					callback(null, user);
 				} else {
-					callback(`Error: ${self.http.status}`);
+					callback(`Error: ${self.http.statusText}`);
 				}
 			}
 		}
@@ -77,7 +77,7 @@ httpReq.prototype.delete = function(url, callback){
 				if(status === 200){
 					callback(null, 'User is deleted');
 				} else {
-					callback(`Error: ${self.http.status}`);
+					callback(`Error: ${self.http.statusText}`);
 				}
 			}
 		}

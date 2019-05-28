@@ -4,6 +4,7 @@
 
 const express = require('express');
 const gravatar = require('gravatar');
+const { userValidator } = require('../../lib/');
 
 // Load routes utils
 const STATUS = require('../utils').STATUS_CODES;
@@ -57,6 +58,12 @@ router.get('/:_id', (req, res) => {
 // @desc 		Create, or update users profile
 // @access	Public
 router.post('/', (req, res) => {
+  // check validation
+  const {errors, isValid} = userValidator(req.body);
+
+  if(!isValid){
+    return res.status(STATUS.BAD_REQUEST).json(errors);
+  };
 
   // get user fields
   const userFields = {
@@ -88,6 +95,7 @@ router.post('/', (req, res) => {
           res.json(updatedUser)
         });
       } else {
+
         // create/save user
         new User(userFields).save().then(newUser => {
           res.json(newUser);

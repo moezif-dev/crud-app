@@ -1,4 +1,5 @@
 import { CreateElement } from '../';
+import { userValidator } from '../../../lib';
 
 const _renderFields = (formFields = []) => {
   const $parent = CreateElement('div', 'user-form');
@@ -14,10 +15,12 @@ const _renderFields = (formFields = []) => {
     };
     const $label = CreateElement('label', 'user-label');
     const $inputGroup = CreateElement('div', 'user-input-group');
+    const $feedback = CreateElement('span', 'user-input-feedback');
 
     $label.textContent = label;
     $inputGroup.appendChild($label);
     $inputGroup.appendChild($input);
+    $inputGroup.appendChild($feedback);
 
     $parent.appendChild($inputGroup);
   });
@@ -61,11 +64,12 @@ const UserForm = (user, editMode = false) => {
   		for(let i = 0; i < $inputNodes.length; i++){
   			const name = $inputNodes[i]['name'];
   			const value = $inputNodes[i]['value'];
-  			
+
   			jsonOutput[name] = value;
   		}
+      const {errors, isValid} = userValidator( jsonOutput );
 
-  		return jsonOutput;
+  		return { jsonOutput, validation: {isValid, errors} };
   };
 
   return $UserForm;
