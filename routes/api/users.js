@@ -28,7 +28,6 @@ router.get('/all', (req, res) => {
       if (!users) {
         return res.status(STATUS.NOT_FOUND).json(errors);
       }
-
       res.json(users);
     }).catch(err => {
       res.status(STATUS.NOT_FOUND).json(err)
@@ -90,7 +89,9 @@ router.post('/', (req, res) => {
         });
       } else {
         // create/save user
-        new User(userFields).save().then(newUser => res.json(newUser));
+        new User(userFields).save().then(newUser => {
+          res.json(newUser);
+        }).catch( errors => res.status(STATUS.SERVER_ERROR).json({errors, msg: "can't save"}) );
       }
     }).catch(errors => res.status(STATUS.SERVER_ERROR).json(errors));
 });

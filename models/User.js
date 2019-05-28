@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 
 // create Schema
 const UserSchema = new Schema({
-	_id:{
-		type: Number, 
-		required: true,
-	},
   isActive: {
     type: Boolean,
     default: false,

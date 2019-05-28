@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -27,9 +28,7 @@ mongoose
   .then( () => console.log("MongoDB Coonected.") )
   .catch( err => console.log(err) );
 
-// app.use('/', (req, res) => {
-// 	res.json({ connected: true })
-// });
+app.use('/', express.static(path.join(__dirname,'public')) );
 app.use('/api/users', users);
 
 // use PORT variable from HEROKU env if available

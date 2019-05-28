@@ -17,16 +17,14 @@ const _createContentItems = (contents = []) => {
 
 const _createContentActions = (actions = []) => {
   return actions.map(action => {
-  	const {dialog, title, user} = action;
-  	console.log({dialog});
+  	const {dialog, title, user, classes} = action;
     const $item = CreateElement('li', 'card-action');
-    const $itemTitle = CreateElement('span');
+    const $itemIcon = CreateElement('i', classes, {title});
 
-    $itemTitle.textContent = title;
-    $item.appendChild($itemTitle);
+    $item.appendChild($itemIcon);
 
     $item.addEventListener('click', function(){
-    	dialog.call(this, user);
+    	dialog.call(this, user, true);
     });
     return $item;
   });
@@ -48,9 +46,9 @@ const _createContentActions = (actions = []) => {
 				<li class="card-content-item"><span class="item-title text-bold">Balance: </span>$2,890.89</li>
 			</ul>
 			<ul class="card-actions">
-				<li class="card-action view">View</li>
-				<li class="card-action edit">Edit</li>
-				<li class="card-action delete">Delete</li>
+				<li class="card-action view"><i class="far fa-address-card text-primary dark-hover"></i></li>
+				<li class="card-action edit"><i class="far fa-user-edit text-primary dark-hover"></i></li>
+				<li class="card-action delete"><i class="far fa-user-times text-danger dark-hover"></i></li>
 			</ul>
 	</div>
 */
@@ -74,9 +72,9 @@ export default (user) => {
   ];
 
   const cardActions = [
-    { user, title: "View", dialog: ViewDialog },
-    { user, title: "Edit", dialog: CreateDialog },
-    { user, title: "Delete", dialog: DeleteDialog },
+    { user, title: "View details", dialog: ViewDialog, classes: 'fas fa-address-card text-primary text-dark-hover'},
+    { user, title: "Edit user", dialog: CreateDialog, classes: 'fas fa-user-edit text-primary text-dark-hover' },
+    { user, title: "Delete user", dialog: DeleteDialog, classes: 'fas fa-user-times text-danger text-dark-hover' },
   ];
 
   // create card container
