@@ -4,6 +4,9 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+// check NODE env
+const isPROD = process.env.NODE_ENV === 'production';
+
 // define app api routes
 const users = require('./routes/api/users');
 
@@ -17,7 +20,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // DB config
-const db = require('./config/keys').mongoURI;
+if(isPROD) {
+	const db = process.env.mongoURI;
+} else {
+	const db = require('./config/keys').mongoURI;
+}
 
 // connect to MongoDB
 mongoose
@@ -31,7 +38,7 @@ mongoose
 app.use('/api/users', users);
 
 // Serve static assets in production
-if(process.env.NODE_ENV === production){
+if( isPROD ){
 	// set Static folder
 	app.use('/', express.static(path.join(__dirname,'public')) );
 }
