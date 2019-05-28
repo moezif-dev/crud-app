@@ -6,22 +6,31 @@
   padding: 10px;
   display: block;
 }
+
 .container {
 	width: 80%;
 	max-width: $container-max-width;
 	margin: 25px auto;
+	text-align: center;
 }
 
+.app-header{
+	width: 100%;
+	display: block;
+	text-align: right;
+	margin: 0 0 20px 0;
+}
 .card {
 	display: inline-block;
-	width: 340.666667px;
+	width: 250px;
 	padding: 10px 15px;
 	margin: 7px 10px;
 	background: $white;
 	border: 1px solid $secondary-dark;
 	border-radius: 20px;
 	box-shadow: 0px 2px 5px 0px $black-light;
-
+	text-align: left;
+	
 	.card-header {
 		margin: 0px auto 5px auto;
 		padding: 2px 0 5px 0;
@@ -37,7 +46,7 @@
 		}
 		.card-name {
 			display: inline-block;
-			max-width: 265px;
+			max-width: 135px;
 			overflow: hidden;
 			white-space: nowrap; 
 			text-overflow: ellipsis;
@@ -46,16 +55,18 @@
 	}
 
 	.card-content {
-		width: 250px;
+		width: 180px;
 		display: inline-block;
 		vertical-align: top;
 	}
 
 	.card-actions {
-		width: 50px;
+		width: 30px;
+		font-size: 20px;
 		display: inline-block;
 
 		.card-action {
+			margin: 2px 0;
 			cursor: pointer;
 		}
 	}
@@ -69,12 +80,47 @@
 	display: none;
 	min-height: 50px;
 	width: 80%;
+	margin: 0;
 	position: fixed;
 	top: 10%;
 	left: 10%;
 	z-index: 100;
-
+	
+	&.mini{
+		width: 40%;
+		top: 25%;
+		left: 30%;
+	}
 	&.open{
 		display: block;
+	}
+	
+	.dialog-title{
+		margin: 5px 0;
+		padding: 0 5px;
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	.dialog-actions{
+		text-align: right;
+	}
+	
+	.dialog-close {
+		cursor: pointer;
+		position: absolute;
+		top: 15px;
+		right: 15px;
+	}
+}
+
+.alert {
+	padding: 7px;
+	margin: 5px 0;
+	border-radius: 5px;
+
+	.alert-message {
+		font-size: 18px;
+		margin: 0;
 	}
 }
