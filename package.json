@@ -23,6 +23,7 @@
   "homepage": "https://github.com/moezif-dev/crud-app#readme",
   "dependencies": {
     "concurrently": "^4.1.0",
+    "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "gravatar": "^1.8.0",
     "mongoose": "^5.5.11",

@@ -1,14 +1,18 @@
-const express = require('express');
-const path = require('path');
-const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const express = require('express');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
+const path = require('path');
 
 // check NODE env
 const isPROD = process.env.NODE_ENV === 'production';
 
 // define app api routes
 const users = require('./routes/api/users');
+
+// initlize .env
+dotenv.config();
 
 const app = express();
 
@@ -20,11 +24,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // DB config
-if(isPROD) {
-	const db = process.env.mongoURI;
-} else {
-	const db = require('./config/keys').mongoURI;
-}
+const db = process.env.mongoURI;
 
 // connect to MongoDB
 mongoose
