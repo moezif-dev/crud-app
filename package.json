@@ -8,7 +8,8 @@
     "client": "webpack-dev-server --mode development --open --hot",
     "client:build": "webpack --mode production",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client:build"
   },
   "repository": {
     "type": "git",
