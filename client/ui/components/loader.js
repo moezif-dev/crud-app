@@ -1,6 +1,6 @@
 import { CreateElement } from '../';
 
-/* a function to add/remove a loading  intindicator to an element */
+/* a component to add/remove a loading intindicator to an element */
 class Loader {
   constructor($el, center){
     const $Loader = CreateElement('div', 'loader');
