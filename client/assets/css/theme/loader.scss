@@ -1,0 +1,40 @@
+.loader {
+	display: block;
+	text-align: center;
+	height: 20px;
+  width: 100px;
+  margin: 0 auto;
+
+	.loading-dot {
+		display: inline-block;
+		background: $primary;
+		width: 0px;
+		height: 0px;
+		border-radius: 50%;
+		margin: 0 8px;
+		transform: translate3d(0);
+		animation: bounce 0.6s infinite alternate;
+	
+		&:nth-child(2){
+			background: $primary-dark;
+			animation-delay: .2s;
+		}
+		&:nth-child(3){
+			animation-delay: .4s;			
+		}
+	}
+
+	&.center{
+		position: absolute;
+		top: 50%;
+    left: 50%;
+	}
+}
+
+@keyframes bounce {
+	to {
+		width: 16px;
+		height: 16px;
+		transform: translate3d(0, -16px, 0);
+	}
+}

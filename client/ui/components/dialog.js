@@ -86,7 +86,7 @@ const _confirmDialog = (options = {}) => {
 };
 
 const CloseDialog = ($dialog) => {
-  App.$el.removeChild($dialog);
+  App.$el.contains( $dialog ) && App.$el.removeChild($dialog);
 }
 
 const ViewDialog = (user) => {

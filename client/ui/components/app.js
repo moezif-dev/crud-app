@@ -1,5 +1,5 @@
 import { httpReq, removeChildren } from '../../utils';
-import { Alert, CreateElement, CreateDialog, UserCard, loader } from '../';
+import { Alert, CreateElement, CreateDialog, Loader, UserCard } from '../';
 
 const httpClient = new httpReq();
 
@@ -16,12 +16,13 @@ class UsersApp{
 	render(){
 		// remove all children when re-rendering
 		removeChildren( this.$el );
-
+		
+		const AppLoader = new Loader( this.$el, true);
 		// add loading spinner while waiting for data
-		loader.add( this.$el );
+		AppLoader.add();
 
 		httpClient.get('/api/users/all', (err, users) => {
-			loader.remove( this.$el );
+			AppLoader.remove();
 
 			if(err){
 				// display alert message
